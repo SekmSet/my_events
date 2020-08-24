@@ -1,3 +1,4 @@
 vendor/
-.env
+back-end/.env
 node_modules/
+.idea/
