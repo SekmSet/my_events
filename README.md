@@ -8,4 +8,9 @@
 ## Framework
 
 - React 
+- Redux
 - Symfony 
+
+## Api 
+
+[API](http://api.eventful.com/docs/events/new)
