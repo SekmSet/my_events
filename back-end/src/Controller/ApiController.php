@@ -2,12 +2,10 @@
 
 namespace App\Controller;
 
-namespace App\Controller;
-
-use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class ApiController extends AbstractController
 {
@@ -57,11 +55,11 @@ class ApiController extends AbstractController
     /**
      * Sets an error message and returns a JSON response
      *
-     * @param string $errors
+     * @param array $errors
      * @param $headers
      * @return JsonResponse
      */
-    public function respondWithErrors($errors, $headers = [])
+    public function respondWithErrors(array $errors, $headers = [])
     {
         $data = [
             'status' => $this->getStatusCode(),

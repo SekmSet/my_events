@@ -3,43 +3,68 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use DateTime;
+use App\Form\RegistrationFormType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AuthController extends ApiController
 {
-
-    public function register(Request $request, UserPasswordEncoderInterface $encoder)
+    public function register(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator, UserPasswordEncoderInterface $encoder): JsonResponse
     {
-        $em = $this->getDoctrine()->getManager();
-        $request = $this->transformJsonBody($request);
-        $first_name = $request->get('first_name');
-        $last_name = $request->get('last_name');
-        $username = $request->get('username');
-        $password = $request->get('password');
-        $email = $request->get('email');
-        $birthday = $request->get('birthday');
-        $avatar = $request->get('avatar');
-
-        if (empty($username) || empty($password) || empty($email)){
-            return $this->respondValidationError("Invalid Username or Password or Email");
-        }
-
-        $time = new DateTime($birthday);
+        //$data = json_decode($request->getContent(), true);
 
         $user = new User();
-        $user->setPassword($encoder->encodePassword($user, $password));
-        $user->setFirstName($first_name);
-        $user->setLastName($last_name);
-        $user->setEmail($email);
-        $user->setEmail($email);
-        $user->setUsername($username);
-        $user->setAvatar($avatar);
-        $user->setBirthday($time);
-        $em->persist($user);
-        $em->flush();
+        $form = $this->createForm(RegistrationFormType::class, $user);
 
-        return $this->respondWithSuccess(sprintf('User %s successfully created', $user->getUsername()));
+        $form->submit($request->request->all(), false);
+
+        if ($form->isValid()) {
+            $user->setPassword(
+                $encoder->encodePassword($user, $form->get('password')->getData())
+            );
+
+            if(!$request->files->has('avatar')) {
+                $user->setAvatar('default.jpg');
+            } else {
+                $image = $request->files->get('avatar');
+                $fichier = md5(uniqid('', true)).'.'.$image->guessExtension();
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                $user->setAvatar($fichier);
+            }
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->respondCreated("ok");
+        }
+
+//        print_r($this->getErrorsFromForm($form));
+        return $this
+            ->setStatusCode(500)
+            ->respondWithErrors($this->getErrorsFromForm($form));
+    }
+
+    private function getErrorsFromForm(FormInterface $form)
+    {
+        $errors = array();
+        foreach ($form->getErrors() as $error) {
+            $errors[] = $error->getMessage();
+        }
+        foreach ($form->all() as $childForm) {
+            if ($childForm instanceof FormInterface) {
+                if ($childErrors = $this->getErrorsFromForm($childForm)) {
+                    $errors[$childForm->getName()] = $childErrors;
+                }
+            }
+        }
+        return $errors;
     }
 }

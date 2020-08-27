@@ -9,7 +9,7 @@ function App() {
         <Router>
             <Header />
             <Switch>
-                <Route>
+                <Route path="/register" >
                     <Log />
                 </Route>
             </Switch>
