@@ -14,3 +14,9 @@
 ## Api 
 
 [API](http://api.eventful.com/docs/events/new)
+
+### Documentations
+
+## Auth 
+
+[Medium - authentication with JWT](https://medium.com/@h.benkachoud/symfony-rest-api-without-fosrestbundle-using-jwt-authentication-part-2-be394d0924dd)
