@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header"
-import Log from "./components/Auth/Log"
+import Regist from "./components/Auth/Regist"
+import Login from "./components/Auth/Login"
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
             <Header />
             <Switch>
                 <Route path="/register" >
-                    <Log />
+                    <Regist />
+                    <Login />
                 </Route>
             </Switch>
      </Router>

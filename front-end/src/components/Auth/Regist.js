@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import {useDispatch} from "react-redux";
 import { registerUser } from "../../_actions/user_actions"
-import { FullInput } from  "../componentModels/form"
+import { FullInput, Button } from  "../componentModels/form"
 
-function Log() {
+function Regist() {
     const dispatch = useDispatch();
     const [err, setError] = useState({});
     const { handleSubmit, register, errors } = useForm();
@@ -14,11 +14,10 @@ function Log() {
         .then((data) => {
             return dispatch(data);
         }).catch((err) => {
-            console.log(JSON.parse(err.request.response).errors);
             setError(JSON.parse(err.request.response).errors);
         }
     )};
-
+    
     return (
       <div className="container">
           <div className="register">
@@ -101,20 +100,15 @@ function Log() {
                       errors={errors.birthday && errors.birthday.message}
                   />
 
-                  <button type="submit">Submit</button>
+                  <Button type="submit" name="Register"/>
               </form>
 
               {Object.keys(err).map((e) => (
                   <p key={e}>{e}</p>
               ))}
-
-          </div>
-
-          <div className="login">
-
           </div>
       </div>
     );
 }
 
-export default Log;
+export default Regist;

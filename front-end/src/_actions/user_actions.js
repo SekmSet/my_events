@@ -34,3 +34,27 @@ export async function registerUser({username, password, first_name, last_name, e
     };
 }
 
+export async function LoginUser({username, password}){
+
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+
+    const request = await axios
+        .post(`${LOGIN_SERVER}`, {username, password})
+        .then((response) => response.data);
+
+    return {
+        type: LOGIN_USER,
+        payload: true,
+        token: request.token,
+    }
+}
+
+export function logoutUser(){
+    return {
+        type: LOGOUT_USER,
+        payload: false,
+    };
+}
+

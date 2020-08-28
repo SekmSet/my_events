@@ -12,3 +12,9 @@ export const FullInput = React.forwardRef(({type, nameLabel, nameInput, errors},
         {errors}
     </>
 ))
+
+export const Button = ({type, name, onClick}) => (
+    <>
+        <button type={type} onClick={onClick}> {name} </button>
+    </>
+)
