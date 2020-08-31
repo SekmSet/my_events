@@ -1,0 +1,60 @@
+.articles-container {
+  margin-top: 100px;
+  position: relative;
+  max-width: 100%;
+  h1 {
+    position: fixed;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+    bottom: 20%;
+    left: 2%;
+    font-size: 2rem;
+  }
+  .articles {
+    display: flex;
+    width: 80%;
+    margin-left: 15%;
+    flex-wrap: wrap;
+    .article-selector {
+      flex: 0 0 20%;
+      margin: 0 2.5% 5% 2.5%;
+      filter: grayscale(1);
+      img {
+        height: 51px;
+        position: absolute;
+        left: 76%;
+        top: 11%;
+        object-fit: cover;
+      }
+      .square{
+        width: 15vw;
+        height: 39vh;
+        background-color: $yellow !important;
+
+        .lilsquare{
+          width: 15vw;
+          height: 8vh;
+          position: relative;
+          top: 79%;
+          background-color: $black !important;
+          .text-title{
+            text-transform: uppercase;
+            color: $coolWhite;
+            text-align: center;
+            font-size: 86%;
+          }
+        }
+      }
+      .details {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5%;
+        h5,
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

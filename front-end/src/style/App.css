@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&display=swap");
+.articles-container {
+  margin-top: 100px;
+  position: relative;
+  max-width: 100%; }
+  .articles-container h1 {
+    position: fixed;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+    bottom: 20%;
+    left: 2%;
+    font-size: 2rem; }
+  .articles-container .articles {
+    display: flex;
+    width: 80%;
+    margin-left: 15%;
+    flex-wrap: wrap; }
+    .articles-container .articles .article-selector {
+      flex: 0 0 20%;
+      margin: 0 2.5% 5% 2.5%;
+      filter: grayscale(1); }
+      .articles-container .articles .article-selector img {
+        height: 51px;
+        position: absolute;
+        left: 76%;
+        top: 11%;
+        object-fit: cover; }
+      .articles-container .articles .article-selector .square {
+        width: 15vw;
+        height: 39vh;
+        background-color: #f8c027 !important; }
+        .articles-container .articles .article-selector .square .lilsquare {
+          width: 15vw;
+          height: 8vh;
+          position: relative;
+          top: 79%;
+          background-color: #000 !important; }
+          .articles-container .articles .article-selector .square .lilsquare .text-title {
+            text-transform: uppercase;
+            color: #f1f1ed;
+            text-align: center;
+            font-size: 86%; }
+      .articles-container .articles .article-selector .details {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5%; }
+        .articles-container .articles .article-selector .details h5,
+        .articles-container .articles .article-selector .details span {
+          font-weight: 500; }
+
+* {
+  box-sizing: border-box;
+  font-family: transat-text, sans-serif;
+  -webkit-font-smoothing: antialiased; }
+
+body {
+  background-color: #e6e6ea; }
+  body.dark-mode {
+    background-color: #010101 !important; }
+    body.dark-mode * {
+      color: #f1f1ed; }
+    body.dark-mode h1 {
+      color: #bb3a3a; }
+
+body {
+  background-color: #e6e6ea; }
+  body.dark-mode {
+    background-color: #010101 !important; }
+    body.dark-mode * {
+      color: #f1f1ed; }
+    body.dark-mode h1 {
+      color: #bb3a3a; }
+
+/*# sourceMappingURL=App.css.map */

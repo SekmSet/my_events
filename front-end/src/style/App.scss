@@ -1,0 +1,33 @@
+@import "./variables.scss";
+@import "./component/events.scss";
+* {
+  box-sizing: border-box;
+  font-family: transat-text, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background-color: $coolBg;
+  &.dark-mode {
+    background-color: $coolBlack !important;
+    * {
+      color: $coolWhite;
+    }
+    h1 {
+      color: $coolTitle;
+    }
+  }
+}
+
+
+body {
+  background-color: $coolBg;
+  &.dark-mode {
+    background-color: $coolBlack !important;
+    * {
+      color: $coolWhite;
+    }
+    h1 {
+      color: $coolTitle;
+    }
+  }
+}
