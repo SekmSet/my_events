@@ -11,7 +11,8 @@ function Login() {
     const onSubmit = values => {
         LoginUser(values)
             .then((data) => {
-                return dispatch(data);}
+                return dispatch(data);
+            }
         )};
 
     return (

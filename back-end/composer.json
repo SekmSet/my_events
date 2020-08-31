@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.1",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "fzaninotto/faker": "^1.9",
+        "league/oauth2-facebook": "^2.0",
         "lexik/jwt-authentication-bundle": "^2.8",
         "nelmio/cors-bundle": "^2.1",
         "symfony/console": "5.1.*",

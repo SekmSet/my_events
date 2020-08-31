@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header"
 import Regist from "./components/Auth/Regist"
 import Login from "./components/Auth/Login"
+import Facebook from "./components/Auth/Facebook"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/register" >
                     <Regist />
                     <Login />
+                    <Facebook />
                 </Route>
             </Switch>
      </Router>

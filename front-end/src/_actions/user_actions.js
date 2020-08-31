@@ -7,7 +7,7 @@ import {
     GET_USERS,
 } from "./ACTION_TYPES";
 
-import { SERVER_URI, REGISTER_URI, LOGIN_SERVER } from "../config";
+import { LOGIN_FACEBOOK_USER, REGISTER_URI, LOGIN_SERVER } from "../config";
 
 export async function registerUser({username, password, first_name, last_name, email, avatar, birthday}){
 
@@ -58,3 +58,14 @@ export function logoutUser(){
     };
 }
 
+export async function LoginFacebook({token}){
+    const request = await axios
+        .post(`${LOGIN_FACEBOOK_USER}/${token}`)
+        .then((response) => response.data)
+
+    return {
+        type: LOGIN_USER,
+        payload: true,
+        token: request.token,
+    } ;
+}

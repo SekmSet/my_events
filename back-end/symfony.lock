@@ -113,6 +113,12 @@
     "lcobucci/jwt": {
         "version": "3.3.3"
     },
+    "league/oauth2-client": {
+        "version": "2.5.0"
+    },
+    "league/oauth2-facebook": {
+        "version": "2.0.2"
+    },
     "lexik/jwt-authentication-bundle": {
         "version": "2.5",
         "recipe": {
