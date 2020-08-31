@@ -19,47 +19,28 @@ import infos from "../../images/infos.png";
                 .then(data => setDetails(data));
         }
 
-
-        /*const searchArticle = (name) => {
-            filterEvents(name).then(data => dispatch(data))
-        }*/
+        
         return (
             <div className="articles-container">
-                    <button onClick={getUserGeolocationDetails}>Evenement près de chez moi</button>
-                {details && <ul>
 
-                            <li>
-                                Location : {`${details.city},${details.country_name}`}
-                            </li>
-                            <li>
-                               IP : {details.IPv4}
-                               }
-                            </li>
-                        </ul>
-
-                    }
                 <h1 className="tk-ivymode"> - The events</h1>
                 <div className="articles">
                 {events.list?.events.event.map(events => (
-                    <div className="article-selector">
+                    <div className="article-selector" >
                         <div className="square">
                             <img className="infos" src={infos} alt="more infos" />
                             <div className="lilsquare">
-                                <h5 className="text-title">
+                                {/*<GetImageEvents />*/}
+                                <h5 className="text-title" >
                                     {events.title}
                                 </h5>
-
-
                             </div>
-
                         </div>
                     </div>
                 ))}
-
-                    </div>
+                </div>
             </div>
         );
-
     }
 
 export default EventsShow;
