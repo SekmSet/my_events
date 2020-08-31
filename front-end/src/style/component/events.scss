@@ -2,6 +2,13 @@
   margin-top: 100px;
   position: relative;
   max-width: 100%;
+  .big-square{
+    width: 12vw;
+    height: 230vh;
+    background-color: #000 !important;
+    display: flex;
+    position: absolute;
+  }
   h1 {
     position: fixed;
     transform-origin: 0 0;
@@ -10,12 +17,14 @@
     bottom: 20%;
     left: 2%;
     font-size: 2rem;
+    color: $coolWhite;
   }
   .articles {
     display: flex;
     width: 80%;
     margin-left: 15%;
     flex-wrap: wrap;
+
     .article-selector {
       flex: 0 0 20%;
       margin: 0 2.5% 5% 2.5%;
@@ -39,6 +48,7 @@
           top: 79%;
           background-color: $black !important;
           .text-title{
+            font-family: "Work Sans", sans-serif;
             text-transform: uppercase;
             color: $coolWhite;
             text-align: center;

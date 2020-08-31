@@ -5,6 +5,12 @@
   margin-top: 100px;
   position: relative;
   max-width: 100%; }
+  .articles-container .big-square {
+    width: 12vw;
+    height: 230vh;
+    background-color: #000 !important;
+    display: flex;
+    position: absolute; }
   .articles-container h1 {
     position: fixed;
     transform-origin: 0 0;
@@ -12,7 +18,8 @@
     text-transform: uppercase;
     bottom: 20%;
     left: 2%;
-    font-size: 2rem; }
+    font-size: 2rem;
+    color: #f1f1ed; }
   .articles-container .articles {
     display: flex;
     width: 80%;
@@ -39,6 +46,7 @@
           top: 79%;
           background-color: #000 !important; }
           .articles-container .articles .article-selector .square .lilsquare .text-title {
+            font-family: "Work Sans", sans-serif;
             text-transform: uppercase;
             color: #f1f1ed;
             text-align: center;
@@ -50,6 +58,40 @@
         .articles-container .articles .article-selector .details h5,
         .articles-container .articles .article-selector .details span {
           font-weight: 500; }
+
+header {
+  position: absolute;
+  top: 2%;
+  z-index: 500;
+  display: flex;
+  flex-direction: row; }
+  header .logo-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -50px; }
+    header .logo-block .logo {
+      width: 200px;
+      height: 200px; }
+  header ul {
+    z-index: 1000;
+    position: relative;
+    display: flex;
+    font-size: 20px;
+    font-weight: lighter;
+    margin-left: 30vw; }
+    header ul li {
+      margin-left: 70px;
+      list-style-type: none;
+      text-decoration: none;
+      mix-blend-mode: difference; }
+      header ul li a {
+        font-family: "Work Sans", sans-serif;
+        color: #000;
+        text-transform: uppercase; }
+        header ul li a:hover {
+          text-decoration: none;
+          color: #4f659f; }
 
 * {
   box-sizing: border-box;

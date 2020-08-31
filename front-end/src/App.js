@@ -6,6 +6,7 @@ import Regist from "./components/Auth/Regist"
 import Login from "./components/Auth/Login"
 import EventsShow from "./components/Events/eventShow";
 import Facebook from "./components/Auth/Facebook";
+import Event from "./components/Events/event";
 /*import { GeoLocation } from 'react-redux-geolocation';*/
 
 import "./style/App.scss";
@@ -36,7 +37,10 @@ function App() {
                     <Facebook />
                 </Route>
                 <Route path="/events" >
-                    <EventsShow />
+                     <EventsShow />
+                </Route>
+                <Route path="/event/:id">
+                    <Event />
                 </Route>
                 <Route path="/profil/:id">
                     <Profil />
@@ -49,7 +53,7 @@ function App() {
                     <Me />
                 </RouteAuth>
             </Switch>
-     </Router>
+        </Router>
     </div>
   );
 }
