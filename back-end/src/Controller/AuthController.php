@@ -8,13 +8,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Security\Core\Security;
 
 class AuthController extends ApiController
 {
-    public function register(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator, UserPasswordEncoderInterface $encoder): JsonResponse
+    public function register(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder): JsonResponse
     {
         //$data = json_decode($request->getContent(), true);
 
@@ -67,4 +68,27 @@ class AuthController extends ApiController
         }
         return $errors;
     }
+
+    /**
+     * @Route("/me/update", name="me_page")
+     */
+    public function meUpdate(){
+        return '';
+    }
+
+    /**
+     * @Route("/api/me", name="me_page")
+     * @param TokenStorageInterface $tokenStorage
+     * @return JsonResponse
+     */
+    public function me(TokenStorageInterface $tokenStorage){
+
+        /** @var User $user */
+        $user = $tokenStorage->getToken()->getUser();
+
+        return $this->response($user->toArray());
+    }
+
+
+
 }

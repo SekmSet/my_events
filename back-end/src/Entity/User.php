@@ -218,5 +218,14 @@ class User implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
-
+    public function toArray(){
+       return  [
+            "first_name" => $this->getFirstName(),
+            "last_name" => $this->getLastName(),
+            "username" => $this->getUsername(),
+            "avatar" => $this->getAvatar(),
+            "resum"=> $this->getResum(),
+            "birthday" => $this->getBirthday()
+        ];
+    }
 }
