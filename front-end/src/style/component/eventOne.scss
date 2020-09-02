@@ -1,0 +1,50 @@
+.article-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .product-sheet{
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 45vh;
+    left: 40vw;
+    font-size: 50px;
+  }
+  .images {
+    width: 30%;
+    height: 100vh;
+    overflow-y: scroll;
+    img {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+      margin-bottom: 5%;
+    }
+  }
+  .details {
+    margin-top: 150px;
+    width: 30%;
+    h2,
+    span {
+      text-transform: uppercase;
+    }
+    .titles {
+      margin-bottom: 10%;
+    }
+    .description{
+      font-weight: bold;
+    }
+      .comment {
+        .username {
+          text-transform: uppercase;
+          text-decoration: underline;
+        }
+        p {
+          font-style: italic;
+          margin-left: 2%;
+          margin-bottom: 1%;
+        }
+      }
+    }
+  }
+

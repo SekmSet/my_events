@@ -11,4 +11,5 @@ export const UPDATE_USER = "update_user";
 
 /* Events */
 export const EVENTS_DISPLAY = "events_display";
+export const GET_EVENT = "get_event";
 export const FILTER_EVENTS_BY_NAME = "filter_events_by_name";

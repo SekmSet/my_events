@@ -7,7 +7,6 @@ import Login from "./components/Auth/Login"
 import EventsShow from "./components/Events/eventShow";
 import Facebook from "./components/Auth/Facebook";
 import Event from "./components/Events/event";
-/*import { GeoLocation } from 'react-redux-geolocation';*/
 
 import "./style/App.scss";
 import Me from "./components/Profil/Me"

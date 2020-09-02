@@ -17,7 +17,7 @@ class ApiEventController extends AbstractController
         // call l'api
         $response = $client->request(
             'GET',
-            'http://api.eventful.com/json/events/search?app_key=qHtRzbRHr3TvZgNm&location=FRA&page_size=20&city_name='
+            'http://api.eventful.com/json/events/search?app_key=qHtRzbRHr3TvZgNm&location=FRA&page_size=20'
         );
 
        /* print_r($response->getContent());*/

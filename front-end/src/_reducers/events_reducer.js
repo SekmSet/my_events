@@ -1,14 +1,18 @@
 import {
     EVENTS_DISPLAY,
-    FILTER_EVENTS_BY_NAME
+    GET_EVENT
 } from "../_actions/ACTION_TYPES";
 
-export default function (state = {}, action) {
+const initialState = {
+    list:{},
+    show:{},
+}
+export default function (state = initialState, action) {
     switch (action.type) {
         case EVENTS_DISPLAY:
             return { ...state, list: action.payload };
-        case FILTER_EVENTS_BY_NAME:
-            return { ...state, filteredList: action.payload};
+        case GET_EVENT:
+            return { ...state, show: action.payload };
         default:
             return state;
     }

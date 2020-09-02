@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getEvents, filterEvents } from "../../_actions/events_actions";
+import { getEvents } from "../../_actions/events_actions";
 import infos from "../../images/infos.png";
 
     function EventsShow() {
@@ -18,7 +18,7 @@ import infos from "../../images/infos.png";
                 <div className="big-square"></div>
                 <h1 className="tk-ivymode"> - The events </h1>
                 <div className="articles">
-                {events.list?.events.event.map(events => (
+                {events.list?.events?.event.map(events => (
                     <div key={events.id} className="article-selector" >
                         <div className="square" >
                             <Link to={`/event/${events.id}`}><img className="infos" src={infos} alt="more infos" /></Link>
