@@ -1,13 +1,14 @@
-import axios from 'axios';
+import axios from './axios';
 import {
     LOGIN_USER,
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
     GET_USERS,
+    PROFIL_USER,
 } from "./ACTION_TYPES";
 
-import { LOGIN_FACEBOOK_USER, REGISTER_URI, LOGIN_SERVER } from "../config";
+import { LOGIN_FACEBOOK_USER, REGISTER_URI, LOGIN_SERVER, USER_PAGE } from "../config";
 
 export async function registerUser({username, password, first_name, last_name, email, avatar, birthday}){
 
@@ -48,6 +49,7 @@ export async function LoginUser({username, password}){
         type: LOGIN_USER,
         payload: true,
         token: request.token,
+        facebook: false,
     }
 }
 
@@ -67,5 +69,17 @@ export async function LoginFacebook({token}){
         type: LOGIN_USER,
         payload: true,
         token: request.token,
-    } ;
+        facebook: true,
+    };
+}
+
+export async function showProfil(){
+    const request = await axios
+        .get(`${USER_PAGE}`)
+        .then((response) => response.data)
+
+    return {
+        type: PROFIL_USER,
+        payload: request,
+    };
 }

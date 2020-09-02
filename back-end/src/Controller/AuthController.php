@@ -30,7 +30,7 @@ class AuthController extends ApiController
             );
 
             if(!$request->files->has('avatar')) {
-                $user->setAvatar('default.jpg');
+                $user->setAvatar('http://127.0.0.1:8000/uploads/default.jpg');
             } else {
                 $image = $request->files->get('avatar');
                 $fichier = md5(uniqid('', true)).'.'.$image->guessExtension();
@@ -38,7 +38,7 @@ class AuthController extends ApiController
                     $this->getParameter('images_directory'),
                     $fichier
                 );
-                $user->setAvatar($fichier);
+                $user->setAvatar("/uploads/$fichier");
             }
 
             $em->persist($user);

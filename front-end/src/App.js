@@ -4,6 +4,7 @@ import Header from "./components/Header/Header"
 import Regist from "./components/Auth/Regist"
 import Login from "./components/Auth/Login"
 import Facebook from "./components/Auth/Facebook"
+import Me from "./components/Profil/Me"
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
                     <Regist />
                     <Login />
                     <Facebook />
+                </Route>
+
+                <Route path="/me">
+                    <Me />
                 </Route>
             </Switch>
      </Router>
