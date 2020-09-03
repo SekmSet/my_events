@@ -1,30 +1,48 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header"
 import Regist from "./components/Auth/Regist"
 import Login from "./components/Auth/Login"
 import Facebook from "./components/Auth/Facebook"
 import Me from "./components/Profil/Me"
+import Update from "./components/Profil/Update"
+import {showProfil} from "./_actions/user_actions";
+import {useDispatch, useSelector} from "react-redux";
+import RouteAuth from "./components/componentModels/RouteAuth";
 
 function App() {
-  return (
-    <div className="App">
-        <Router>
-            <Header />
-            <Switch>
-                <Route path="/register" >
-                    <Regist />
-                    <Login />
-                    <Facebook />
-                </Route>
+    const dispatch = useDispatch();
+    const {loginSucces} = useSelector((state) => state.user);
 
-                <Route path="/me">
-                    <Me />
-                </Route>
-            </Switch>
-     </Router>
-    </div>
-  );
+    useEffect(() => {
+        if(loginSucces){
+            showProfil().then((user) => dispatch(user));
+        }
+    }, [dispatch, loginSucces]);
+
+    return (
+        <div className="App">
+            <Router>
+                <Header />
+                <Switch>
+                    <Route path="/register" >
+                        <Regist />
+                        <Login />
+                        <Facebook />
+                    </Route>
+
+
+                    <RouteAuth path="/me/update">
+                        <Update />
+                    </RouteAuth>
+                    <RouteAuth path="/me">
+                        <Me />
+                    </RouteAuth>
+
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

@@ -49,7 +49,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\File
      */
     private $avatar;
 
@@ -73,9 +72,7 @@ class User implements UserInterface
      * )
      * @Assert\Length(
      *      min = 5,
-     *      max = 20,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      minMessage = "Your password must be at least {{ limit }} characters long",
      *      allowEmptyString = false
      * )
      * @Assert\NotBlank
@@ -225,6 +222,7 @@ class User implements UserInterface
             "username" => $this->getUsername(),
             "avatar" => $this->getAvatar(),
             "resum"=> $this->getResum(),
+            "email"=> $this->getEmail(),
             "birthday" => $this->getBirthday()
         ];
     }

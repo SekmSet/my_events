@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\UpdateUserFormType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -53,27 +55,42 @@ class AuthController extends ApiController
             ->respondWithErrors($this->getErrorsFromForm($form));
     }
 
-    private function getErrorsFromForm(FormInterface $form)
-    {
-        $errors = array();
-        foreach ($form->getErrors() as $error) {
-            $errors[] = $error->getMessage();
-        }
-        foreach ($form->all() as $childForm) {
-            if ($childForm instanceof FormInterface) {
-                if ($childErrors = $this->getErrorsFromForm($childForm)) {
-                    $errors[$childForm->getName()] = $childErrors;
-                }
-            }
-        }
-        return $errors;
-    }
-
     /**
-     * @Route("/me/update", name="me_page")
+     * @Route("/api/me/update", name="update_page")
+     * @param Security $security
+     * @param UserRepository $userRepository
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return JsonResponse
      */
-    public function meUpdate(){
-        return '';
+    public function meUpdate(Security $security, UserRepository $userRepository, Request $request, EntityManagerInterface $em){
+        /** @var User $currentUser */
+        $currentUser = $security->getUser();
+        $user = $userRepository->getByEmail($currentUser->getEmail());
+
+        $form = $this->createForm(UpdateUserFormType::class, $user);
+        $form->submit($request->request->all(), false);
+
+        if ($form->isValid()) {
+
+            if($request->files->has('avatar')) {
+                $image = $request->files->get('avatar');
+                $fichier = md5(uniqid('', true)).'.'.$image->guessExtension();
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                $user->setAvatar("/uploads/$fichier");
+            }
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->response($user->toArray());
+        }
+        return $this
+            ->setStatusCode(500)
+            ->respondWithErrors($this->getErrorsFromForm($form));
     }
 
     /**
@@ -88,7 +105,4 @@ class AuthController extends ApiController
 
         return $this->response($user->toArray());
     }
-
-
-
 }

@@ -1,14 +1,10 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import { showProfil } from "../../_actions/user_actions";
+import React from "react";
+import {useSelector} from "react-redux";
 import {SERVER_URI} from "../../config";
-function Me(){
-    const dispatch = useDispatch();
-    const infoUser = useSelector((state) => state.user.userInfo);
+import {Link} from "react-router-dom";
 
-    useEffect(() =>{
-        showProfil().then((data) => dispatch(data));
-    }, [dispatch])
+function Me(){
+    const infoUser = useSelector((state) => state.user.userInfo);
 
     return (
         <div>
@@ -19,12 +15,12 @@ function Me(){
             <div>
                 <img src={`${SERVER_URI}${infoUser?.avatar}`} alt={infoUser?.avatar} />
             </div>
-            <div>About me
-                {infoUser?.resum}
+            <div>About me : 
+                <p>{infoUser?.resum}</p>
             </div>
             <div>Birthday : {infoUser?.birthday.date}</div>
 
-
+            <Link to={"/me/update"}> Update </Link>
         </div>
     )
 }
