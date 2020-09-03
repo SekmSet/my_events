@@ -13,7 +13,7 @@ function Me(){
                 <span>{infoUser?.first_name} {infoUser?.last_name}</span>
             </div>
             <div>
-                <img src={`${SERVER_URI}${infoUser?.avatar}`} alt={infoUser?.avatar} />
+                <img src={`${SERVER_URI}${infoUser?.avatar}`} alt={`profil avatar :  ${infoUser?.username}`} />
             </div>
             <div>About me :
                 <p>{infoUser?.resum}</p>

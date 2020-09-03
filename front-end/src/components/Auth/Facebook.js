@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { Card, Image } from 'react-bootstrap';
-import {useDispatch, useSelector} from "react-redux";
+import { Card } from 'react-bootstrap';
+import {useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { LoginFacebook } from '../../_actions/user_actions';
@@ -9,8 +9,7 @@ import { LoginFacebook } from '../../_actions/user_actions';
 function Facebook() {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const user = useSelector((state) => state.user);
-
+ 
     const responseFacebook = (response) => {
         if (response.accessToken) {
             LoginFacebook({token: response.accessToken}).then(dataFbk => {

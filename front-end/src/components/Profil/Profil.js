@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import { useParams } from "react-router";
 import { showUserProfile } from "../../_actions/user_actions"
 import {SERVER_URI} from "../../config";
-import {Link} from "react-router-dom";
 
 function Profil(){
 
@@ -15,7 +14,7 @@ function Profil(){
         showUserProfile({id}).then((data) => {
             dispatch(data);
         });
-    }, [dispatch])
+    }, [dispatch, id])
 
     return (
         <div>
@@ -24,7 +23,7 @@ function Profil(){
                 <span>{infoUser?.first_name} {infoUser?.last_name}</span>
             </div>
             <div>
-                <img src={`${SERVER_URI}${infoUser?.avatar}`} alt={infoUser?.avatar} />
+                <img src={`${SERVER_URI}${infoUser?.avatar}`} alt={`profil avatar :  ${infoUser?.username}`}  />
             </div>
             <div>About me :
                 <p>{infoUser?.resum}</p>
