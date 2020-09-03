@@ -1,10 +1,21 @@
-import React from "react";
-import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import { useParams } from "react-router";
+import { showUserProfile } from "../../_actions/user_actions"
 import {SERVER_URI} from "../../config";
+import {Link} from "react-router-dom";
 
-function Me(){
+function Profil(){
+
+    const dispatch = useDispatch();
+    const { id } = useParams();
     const infoUser = useSelector((state) => state.user.userInfo);
+
+    useEffect(()=>{
+        showUserProfile({id}).then((data) => {
+            dispatch(data);
+        });
+    }, [dispatch])
 
     return (
         <div>
@@ -19,10 +30,8 @@ function Me(){
                 <p>{infoUser?.resum}</p>
             </div>
             <div>Birthday : {infoUser?.birthday.date}</div>
-
-            <Link to={"/me/update"}> Update </Link>
         </div>
     )
 }
 
-export default Me;
+export default Profil;

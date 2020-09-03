@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import {useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
-
 import {LoginUser} from "../../_actions/user_actions"
 import { FullInput, Button } from  "../componentModels/form"
 

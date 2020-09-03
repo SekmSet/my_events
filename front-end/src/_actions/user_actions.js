@@ -4,10 +4,10 @@ import {
     REGISTER_USER,
     LOGOUT_USER,
     PROFIL_USER,
-    UPDATE_USER,
+    UPDATE_USER, PAGE_USER,
 } from "./ACTION_TYPES";
 
-import { LOGIN_FACEBOOK_USER, REGISTER_URI, LOGIN_SERVER, USER_PAGE, UPDATE_PAGE } from "../config";
+import { LOGIN_FACEBOOK_USER, REGISTER_URI, LOGIN_SERVER, USER_PAGE, USER_PROFIL, UPDATE_PAGE } from "../config";
 
 export async function registerUser({username, password, first_name, last_name, email, avatar, birthday}){
 
@@ -79,6 +79,17 @@ export async function showProfil(){
 
     return {
         type: PROFIL_USER,
+        payload: request,
+    };
+}
+
+export async function showUserProfile({id}){
+    const request = await axios
+        .get(`${USER_PROFIL}/${id}`)
+        .then((response) => response.data)
+
+    return {
+        type: PAGE_USER,
         payload: request,
     };
 }

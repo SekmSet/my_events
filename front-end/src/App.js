@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import Header from "./components/Header/Header"
 import Regist from "./components/Auth/Regist"
 import Login from "./components/Auth/Login"
 import Facebook from "./components/Auth/Facebook"
 import Me from "./components/Profil/Me"
+import Profil from "./components/Profil/Profil"
 import Update from "./components/Profil/Update"
 import {showProfil} from "./_actions/user_actions";
-import {useDispatch, useSelector} from "react-redux";
 import RouteAuth from "./components/componentModels/RouteAuth";
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
                         <Facebook />
                     </Route>
 
+                    <Route path="/profil/:id">
+                            <Profil />
+                    </Route>
 
                     <RouteAuth path="/me/update">
                         <Update />

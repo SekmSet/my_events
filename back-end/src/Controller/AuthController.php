@@ -7,7 +7,6 @@ use App\Form\RegistrationFormType;
 use App\Form\UpdateUserFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,7 +62,8 @@ class AuthController extends ApiController
      * @param EntityManagerInterface $em
      * @return JsonResponse
      */
-    public function meUpdate(Security $security, UserRepository $userRepository, Request $request, EntityManagerInterface $em){
+    public function meUpdate(Security $security, UserRepository $userRepository, Request $request, EntityManagerInterface $em): JsonResponse
+    {
         /** @var User $currentUser */
         $currentUser = $security->getUser();
         $user = $userRepository->getByEmail($currentUser->getEmail());
@@ -98,11 +98,24 @@ class AuthController extends ApiController
      * @param TokenStorageInterface $tokenStorage
      * @return JsonResponse
      */
-    public function me(TokenStorageInterface $tokenStorage){
+    public function me(TokenStorageInterface $tokenStorage): JsonResponse
+    {
 
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
 
+        return $this->response($user->toArray());
+    }
+
+    /**
+     * @Route("/profil/{id}", name="profil_page")
+     * @param UserRepository $userRepository
+     * @param $id
+     * @return JsonResponse
+     */
+    public function profil(UserRepository $userRepository, $id): JsonResponse
+    {
+        $user = $userRepository->getById($id);
         return $this->response($user->toArray());
     }
 }

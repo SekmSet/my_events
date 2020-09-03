@@ -5,6 +5,7 @@ import {
     LOGOUT_USER,
     GET_USERS,
     PROFIL_USER,
+    PAGE_USER,
     UPDATE_USER,
 } from "../_actions/ACTION_TYPES";
 
@@ -31,6 +32,7 @@ export default function (state = initialState, action) {
         case GET_USERS:
             return { ...state, users: action.payload };
         case PROFIL_USER:
+        case PAGE_USER:
         case UPDATE_USER:
             return {...state, userInfo: action.payload}
         default:
