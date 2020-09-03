@@ -39,6 +39,11 @@
         width: 15vw;
         height: 39vh;
         background-color: #f8c027 !important; }
+        .articles-container .articles .article-selector .square .infos-img {
+          left: 0%;
+          top: 0%;
+          width: 15vw;
+          height: 36vh; }
         .articles-container .articles .article-selector .square .lilsquare {
           width: 15vw;
           height: 8vh;
@@ -98,38 +103,66 @@ header {
   width: 100%;
   justify-content: space-around;
   flex-wrap: wrap; }
-  .article-container .product-sheet {
-    transform: rotate(-90deg);
+  .article-container .big-square {
+    width: 12.5vw;
+    height: 86vh;
+    background-color: #000 !important;
+    display: flex;
     position: absolute;
-    top: 45vh;
-    left: 40vw;
-    font-size: 50px; }
-  .article-container .images {
-    width: 30%;
-    height: 100vh;
-    overflow-y: scroll; }
-    .article-container .images img {
-      width: 100%;
-      height: 70vh;
-      object-fit: cover;
-      margin-bottom: 5%; }
+    left: 87.5%;
+    top: 14%; }
+    .article-container .big-square .h1 {
+      position: fixed;
+      transform-origin: 0 0;
+      transform: rotate(90deg);
+      text-transform: uppercase;
+      bottom: 66%;
+      left: 98%;
+      font-size: 2rem;
+      color: #f1f1ed;
+      display: inline-table; }
+  .article-container .add-to-cart {
+    background-color: transparent;
+    border: none;
+    width: 48%;
+    position: relative;
+    display: flex;
+    outline: none; }
+    .article-container .add-to-cart .btn-text {
+      background-color: black;
+      border-radius: 10%;
+      color: #ffffff;
+      width: 50%;
+      padding: 5%;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-left: 89%;
+      margin-top: 13%; }
+  .article-container .images img {
+    width: 28%;
+    height: 66vh;
+    object-fit: cover;
+    margin-bottom: 5%; }
   .article-container .details {
-    margin-top: 150px;
-    width: 30%; }
+    margin-top: 186px;
+    width: 59%; }
     .article-container .details h2,
     .article-container .details span {
-      text-transform: uppercase; }
+      font-family: "Work Sans", sans-serif;
+      text-transform: uppercase;
+      text-align: center; }
     .article-container .details .titles {
       margin-bottom: 10%; }
+      .article-container .details .titles .square {
+        width: 43vw;
+        height: 63vh;
+        background-color: #f8c027 !important;
+        margin-top: -55.3%;
+        margin-left: 30%; }
     .article-container .details .description {
-      font-weight: bold; }
-    .article-container .details .comment .username {
-      text-transform: uppercase;
-      text-decoration: underline; }
-    .article-container .details .comment p {
-      font-style: italic;
-      margin-left: 2%;
-      margin-bottom: 1%; }
+      font-weight: bold;
+      text-align: center;
+      font-size: 148%; }
 
 * {
   box-sizing: border-box;

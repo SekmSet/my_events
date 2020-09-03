@@ -3,48 +3,79 @@
   width: 100%;
   justify-content: space-around;
   flex-wrap: wrap;
-  .product-sheet{
-    transform: rotate(-90deg);
+  .big-square{
+    width: 12.5vw;
+    height: 86vh;
+    background-color: #000 !important;
+    display: flex;
     position: absolute;
-    top: 45vh;
-    left: 40vw;
-    font-size: 50px;
+    left: 87.5%;
+    top: 14%;
+    .h1{
+      position: fixed;
+      transform-origin: 0 0;
+      transform: rotate(90deg);
+      text-transform: uppercase;
+      bottom: 66%;
+      left: 98%;
+      font-size: 2rem;
+      color: #f1f1ed;
+      display: inline-table;
+    }
   }
+  .add-to-cart {
+    background-color: transparent;
+    border: none;
+    width: 48%;
+    position: relative;
+    display: flex;
+    outline: none;
+    .btn-text {
+      background-color: black;
+      border-radius: 10%;
+      color: #ffffff;
+      width: 50%;
+      padding: 5%;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-left: 89%;
+      margin-top: 13%;
+    }
+  }
+
   .images {
-    width: 30%;
-    height: 100vh;
-    overflow-y: scroll;
+
     img {
-      width: 100%;
-      height: 70vh;
+      width: 28%;
+      height: 66vh;
       object-fit: cover;
       margin-bottom: 5%;
     }
   }
   .details {
-    margin-top: 150px;
-    width: 30%;
+    margin-top: 186px;
+    width: 59%;
     h2,
     span {
+      font-family: "Work Sans", sans-serif;
       text-transform: uppercase;
+      text-align: center;
     }
     .titles {
       margin-bottom: 10%;
+      .square {
+        width: 43vw;
+        height: 63vh;
+        background-color: #f8c027 !important;
+        margin-top: -55.3%;
+        margin-left: 30%;
+    }
     }
     .description{
       font-weight: bold;
+      text-align: center;
+      font-size: 148%;
     }
-      .comment {
-        .username {
-          text-transform: uppercase;
-          text-decoration: underline;
-        }
-        p {
-          font-style: italic;
-          margin-left: 2%;
-          margin-bottom: 1%;
-        }
-      }
     }
   }
 
