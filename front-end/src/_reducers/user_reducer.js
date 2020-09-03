@@ -32,9 +32,10 @@ export default function (state = initialState, action) {
         case GET_USERS:
             return { ...state, users: action.payload };
         case PROFIL_USER:
-        case PAGE_USER:
         case UPDATE_USER:
             return {...state, userInfo: action.payload}
+        case PAGE_USER:
+             return {...state, foreignUserInfo: action.payload}
         default:
             return state;
     }

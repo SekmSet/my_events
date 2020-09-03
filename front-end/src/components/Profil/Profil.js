@@ -9,7 +9,7 @@ function Profil(){
 
     const dispatch = useDispatch();
     const { id } = useParams();
-    const infoUser = useSelector((state) => state.user.userInfo);
+    const infoUser = useSelector((state) => state.user.foreignUserInfo);
 
     useEffect(()=>{
         showUserProfile({id}).then((data) => {
