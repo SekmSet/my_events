@@ -16,6 +16,8 @@ use Symfony\Component\Security\Core\Security;
 
 class AuthController extends ApiController
 {
+    public const avatarPath = '/uploads/default.jpg';
+
     public function register(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder): JsonResponse
     {
         //$data = json_decode($request->getContent(), true);
@@ -31,7 +33,7 @@ class AuthController extends ApiController
             );
 
             if(!$request->files->has('avatar')) {
-                $user->setAvatar('http://127.0.0.1:8000/uploads/default.jpg');
+                $user->setAvatar(self::avatarPath);
             } else {
                 $image = $request->files->get('avatar');
                 $fichier = md5(uniqid('', true)).'.'.$image->guessExtension();
