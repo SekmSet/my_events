@@ -7,7 +7,6 @@ import {
 
 import { EVENT_SERVER } from "../config";
 
-
 export async function getEvents() {
     const request = await axios
         .get(`${EVENT_SERVER}`)

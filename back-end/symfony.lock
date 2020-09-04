@@ -1,0 +1,11 @@
+{
+    "php": {
+        "version": "7.4"
+    },
+    "symfony/http-client": {
+        "version": "v5.1.5"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v2.1.3"
+    }
+}
