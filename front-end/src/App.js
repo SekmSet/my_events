@@ -4,7 +4,11 @@ import {useDispatch, useSelector} from "react-redux";
 import Header from "./components/Header/Header"
 import Regist from "./components/Auth/Regist"
 import Login from "./components/Auth/Login"
-import Facebook from "./components/Auth/Facebook"
+import EventsShow from "./components/Events/eventShow";
+import Facebook from "./components/Auth/Facebook";
+import Event from "./components/Events/event";
+
+import "./style/App.scss";
 import Me from "./components/Profil/Me"
 import Profil from "./components/Profil/Profil"
 import Update from "./components/Profil/Update"
@@ -22,31 +26,35 @@ function App() {
     }, [dispatch, loginSucces]);
 
     return (
-        <div className="App">
-            <Router>
-                <Header />
-                <Switch>
-                    <Route path="/register" >
-                        <Regist />
-                        <Login />
-                        <Facebook />
-                    </Route>
+    <div className="App">
+        <Router>
+            <Header />
+            <Switch>
+                <Route path="/register" >
+                    <Regist />
+                    <Login />
+                    <Facebook />
+                </Route>
+                <Route path="/events" >
+                     <EventsShow />
+                </Route>
+                <Route path="/event/:id">
+                    <Event />
+                </Route>
+                <Route path="/profil/:id">
+                    <Profil />
+                </Route>
 
-                    <Route path="/profil/:id">
-                            <Profil />
-                    </Route>
-
-                    <RouteAuth path="/me/update">
-                        <Update />
-                    </RouteAuth>
-                    <RouteAuth path="/me">
-                        <Me />
-                    </RouteAuth>
-
-                </Switch>
-            </Router>
-        </div>
-    );
+                <RouteAuth path="/me/update">
+                    <Update />
+                </RouteAuth>
+                <RouteAuth path="/me">
+                    <Me />
+                </RouteAuth>
+            </Switch>
+        </Router>
+    </div>
+  );
 }
 
 export default App;
