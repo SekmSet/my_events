@@ -1,14 +1,13 @@
 import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import "./style/App.scss";
 import Header from "./components/Header/Header"
 import Regist from "./components/Auth/Regist"
 import Login from "./components/Auth/Login"
 import EventsShow from "./components/Events/eventShow";
 import Facebook from "./components/Auth/Facebook";
 import Event from "./components/Events/event";
-
-import "./style/App.scss";
 import Me from "./components/Profil/Me"
 import Profil from "./components/Profil/Profil"
 import Update from "./components/Profil/Update"
