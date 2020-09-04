@@ -17,7 +17,7 @@ function Regist() {
             setError(JSON.parse(err.request.response).errors);
         }
     )};
-    
+
     return (
       <div className="container">
           <div className="register">

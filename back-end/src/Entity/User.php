@@ -49,7 +49,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\File
      */
     private $avatar;
 
@@ -73,9 +72,7 @@ class User implements UserInterface
      * )
      * @Assert\Length(
      *      min = 5,
-     *      max = 20,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      minMessage = "Your password must be at least {{ limit }} characters long",
      *      allowEmptyString = false
      * )
      * @Assert\NotBlank
@@ -218,5 +215,15 @@ class User implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
-
+    public function toArray(){
+       return  [
+            "first_name" => $this->getFirstName(),
+            "last_name" => $this->getLastName(),
+            "username" => $this->getUsername(),
+            "avatar" => $this->getAvatar(),
+            "resum"=> $this->getResum(),
+            "email"=> $this->getEmail(),
+            "birthday" => $this->getBirthday()
+        ];
+    }
 }

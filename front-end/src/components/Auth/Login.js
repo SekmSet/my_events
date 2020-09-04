@@ -1,17 +1,20 @@
-import React, {useState} from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import {useDispatch} from "react-redux";
-import { LoginUser } from "../../_actions/user_actions"
+import { useHistory } from "react-router-dom";
+import {LoginUser} from "../../_actions/user_actions"
 import { FullInput, Button } from  "../componentModels/form"
 
 function Login() {
     const dispatch = useDispatch();
     const { handleSubmit, register, errors } = useForm();
+    const history = useHistory();
 
     const onSubmit = values => {
         LoginUser(values)
             .then((data) => {
-                return dispatch(data);
+                dispatch(data);
+                history.push('/me');
             }
         )};
 

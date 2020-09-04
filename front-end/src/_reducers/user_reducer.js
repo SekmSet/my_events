@@ -4,6 +4,9 @@ import {
     AUTH_USER,
     LOGOUT_USER,
     GET_USERS,
+    PROFIL_USER,
+    PAGE_USER,
+    UPDATE_USER,
 } from "../_actions/ACTION_TYPES";
 
 const token = window.localStorage.getItem('token');
@@ -28,6 +31,11 @@ export default function (state = initialState, action) {
             return { ...state, loginSucces: action.payload, token: null };
         case GET_USERS:
             return { ...state, users: action.payload };
+        case PROFIL_USER:
+        case UPDATE_USER:
+            return {...state, userInfo: action.payload}
+        case PAGE_USER:
+             return {...state, foreignUserInfo: action.payload}
         default:
             return state;
     }
