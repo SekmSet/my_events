@@ -22,15 +22,17 @@ import {
             <div className="big-square"><h2 className="h1"> - EVENT SIDE </h2></div>
             <div className="details">
                 <div className="titles">
-                    <div className="images"><img className="infos" src={Eve} alt="more infos" /></div>
+                    <div className="images"><img className="infos" src={Eve} alt="more infos"/></div>
                     <div className="square">
-                    <h2 className="name tk-ivymode">{event.title}</h2>
-                    <p className="description">{event.description}</p>
-                    <br/>
-                        <span className="color"> {event.region} </span>                    <br />
-                    <button className="add-to-cart">
-                    <div className="btn-text">Participate</div>
-                    </button>
+                        <h2 className="name tk-ivymode">{event.title}</h2>
+                        <p className="description" dangerouslySetInnerHTML={{
+                            __html: event.description
+                        }} />
+                        <br/>
+                        <span className="color"> {event.region} </span> <br/>
+                        <button className="add-to-cart">
+                            <div className="btn-text">Participate</div>
+                        </button>
                     </div>
                 </div>
             </div>
