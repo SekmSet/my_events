@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { LoginFacebook } from '../../_actions/user_actions';
+import {toast} from "react-toastify";
 
 function Facebook() {
     const dispatch = useDispatch();
@@ -14,6 +15,15 @@ function Facebook() {
         if (response.accessToken) {
             LoginFacebook({token: response.accessToken}).then(dataFbk => {
                 dispatch(dataFbk)
+                toast('🦄 You are connected with Facebook!', {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
                 history.push('/me');
             });
         }

@@ -1,33 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { logoutUser } from "../../_actions/user_actions";
-import { Button } from  "../componentModels/form"
+import Menu from "../Menu/Menu";
 
 function Header() {
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
-
-    const handleDisconnect = (e) => {
-        e.preventDefault();
-        dispatch(logoutUser());
-    };
-
     return (
-        <header>
-
-            <ul>
-                <li>
-                    {!user.loginSucces &&
-                        <Link to="/register">register</Link>
-                    }
-
-                    {user.loginSucces &&
-                        <Button type="submit" name="Logout" onClick={handleDisconnect} />
-                    }
-                </li>
-            </ul>
-        </header>
+        <div
+            className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <h5 className="my-0 mr-md-auto font-weight-normal">My Events</h5>
+            <Menu />
+        </div>
     );
 }
 

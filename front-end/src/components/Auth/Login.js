@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 import {LoginUser} from "../../_actions/user_actions"
 import { FullInput, Button } from  "../componentModels/form"
+import {toast} from "react-toastify";
 
 function Login() {
     const dispatch = useDispatch();
@@ -13,10 +14,22 @@ function Login() {
     const onSubmit = values => {
         LoginUser(values)
             .then((data) => {
-                dispatch(data);
-                history.push('/me');
-            }
-        )};
+                dispatch(data)
+
+            })
+            .then(() => {
+                toast('🦄 You are connected !', {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                history.push('/me')
+            });
+    }
 
     return (
         <div className="container">

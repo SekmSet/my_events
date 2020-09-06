@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {
     EVENTS_DISPLAY,
-    FILTER_EVENTS_BY_NAME,
     GET_EVENT,
 } from "./ACTION_TYPES";
 
@@ -25,14 +24,3 @@ export async function getEvent({id}) {
         payload: request,
     };
 }
-
-/*export async function filterEvents(name) {
-    const request = await axios
-        .get(`${EVENT_SERVER}?city_name=${name}`)
-        .then((response) => response.data);
-    return {
-        type: FILTER_EVENTS_BY_NAME,
-        payload: request
-    };
-}*/
-

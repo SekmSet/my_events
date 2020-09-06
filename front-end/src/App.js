@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import "./style/App.scss";
 import Header from "./components/Header/Header"
 import Regist from "./components/Auth/Regist"
@@ -28,9 +30,12 @@ function App() {
     <div className="App">
         <Router>
             <Header />
+
             <Switch>
                 <Route path="/register" >
                     <Regist />
+                </Route>
+                <Route path="/login" >
                     <Login />
                     <Facebook />
                 </Route>
@@ -52,6 +57,18 @@ function App() {
                 </RouteAuth>
             </Switch>
         </Router>
+
+        <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
     </div>
   );
 }

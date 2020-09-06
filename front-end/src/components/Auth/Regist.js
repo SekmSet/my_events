@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import {useDispatch} from "react-redux";
 import { registerUser } from "../../_actions/user_actions"
 import { FullInput, Button } from  "../componentModels/form"
+import {toast} from "react-toastify";
 
 function Regist() {
     const dispatch = useDispatch();
@@ -12,6 +13,16 @@ function Regist() {
     const onSubmit = values => {
         registerUser(values)
         .then((data) => {
+            toast('🦄 Your account was successfully created !', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+
             return dispatch(data);
         }).catch((err) => {
             setError(JSON.parse(err.request.response).errors);

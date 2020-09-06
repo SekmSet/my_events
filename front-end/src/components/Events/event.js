@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Eve from "../../images/eve.jpg";
@@ -6,7 +6,6 @@ import Eve from "../../images/eve.jpg";
 import {
     getEvent
 } from "../../_actions/events_actions";
-import infos from "../../images/infos.png";
 
     function EventOne() {
     const dispatch = useDispatch();
